@@ -1,7 +1,7 @@
 import flet as ft
-from page.home_page import HomePage
-from page.second_page import SecondPage
-from page.settings_page import SettingsPage
+from ui.page.home_page import HomePage
+from ui.page.second_page import SecondPage
+from ui.page.settings_page import SettingsPage
 
 class Router:
     def __init__(self, page: ft.Page, content_container: ft.Column):
@@ -19,7 +19,7 @@ class Router:
             second_page = SecondPage()
             self.content_container.controls.append(second_page.container)
         elif self.page.route == "/settings":
-            settings_page = SettingsPage()
+            settings_page = SettingsPage(self.page)  # pageを渡してSettingsPageを初期化
             self.content_container.controls.append(settings_page.container)
         self.page.update()
 
